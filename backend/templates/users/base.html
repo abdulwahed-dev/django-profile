@@ -25,11 +25,15 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ml-auto">
+              <div class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
                   <a href="#" class="nav-item nav-link">Profile</a>
-                  <a href="#" class="nav-item nav-link">Logout</a>
-                  <a href="#" class="nav-item nav-link">Sign in</a>
-                </div>
+                  <a href="{% url 'logout' %}" class="nav-item nav-link">Logout</a>
+                {% else %}
+                  <a href="{% url 'login' %}" class="nav-item nav-link">Sign in</a>
+                {% endif %}
+
+              </div>
             </div>
         </nav>
         <!--Any flash messages pop up in any page because this is the base template-->
